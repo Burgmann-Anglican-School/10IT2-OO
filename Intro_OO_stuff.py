@@ -33,11 +33,18 @@ class Dog:
         self.legs = legs
 
     def description(self):
-        print(self.name + ' is a ' + self.breed + ' dog that is ' + self.colour + ' that has ' + self.legs + ' legs.')
+        return self.name + ' is a ' + self.breed + ' dog that is ' + self.colour + ' that has ' + self.legs + ' legs.'
 
-for i in range(10):
-    print(i)
+    def __str__(self):
+        return f"{self.name} is a {self.breed} that is {self.colour} that has {self.legs} legs."
+    
 #Instantiation
 dog1 = Dog('Paul', 'Labrador', 'Purple', '608')
 dog2 = Dog('Steven', 'cat', 'yellow', 'space')
 dog3 = Dog('Paul', 'Labrador', 'Purple', '608')
+
+my_list = [1,2,3]
+
+print(my_list)
+print(dog1.description())
+print(dog1)
