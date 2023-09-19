@@ -26,9 +26,10 @@ dog_colour = "White & Black"
 class Dog:
     #dunder method
     #Initialising the class, also called the class constructor
-    def __init__(self, name, breed, colour, legs):
+    def __init__(self, name, colour, legs):
         self.name = name
-        self.breed = breed
+        #We don't want breed anymore since we're using child classes for that
+        # self.breed = breed
         self.colour = colour
         self.legs = legs
 
@@ -36,15 +37,41 @@ class Dog:
         return self.name + ' is a ' + self.breed + ' dog that is ' + self.colour + ' that has ' + self.legs + ' legs.'
 
     def __str__(self):
-        return f"{self.name} is a {self.breed} that is {self.colour} that has {self.legs} legs."
+        return f"{self.name} is a {self.__class__.__name__} that is {self.colour} that has {self.legs} legs."
     
+    def speak(self):
+        return "I have not been implemented"
+
+#Labrador will inherit from Dog.
+class Labrador(Dog):
+
+    #This will override the initialiser/constructor from the parent class
+    def __init__(self, name, colour, legs):
+        self.name = name
+        self.colour = colour
+        self.legs = legs
+
+    def speak(self):
+        return "Bark"
+
+class Cat(Dog):
+    
+    #This will override the initialiser/constructor from the parent class
+    def __init__(self, name, colour, legs):
+        self.name = name
+        self.colour = colour
+        self.legs = legs
+
 #Instantiation
-dog1 = Dog('Paul', 'Labrador', 'Purple', '608')
-dog2 = Dog('Steven', 'cat', 'yellow', 'space')
-dog3 = Dog('Paul', 'Labrador', 'Purple', '608')
+#We don't want to instantiate like this anymore, because we need to use the child classes
+# dog1 = Dog('Paul', 'Labrador', 'Purple', 608)
+# dog2 = Dog('Steven', 'cat', 'yellow', 4)
+# dog3 = Dog('Jerylt', 'Labradoodle', 'orange', 5)
 
-my_list = [1,2,3]
+dog1 = Labrador('Paul', 'Purple', 608)
+dog2 = Cat('Steven', 'yellow', 4)
 
-print(my_list)
-print(dog1.description())
-print(dog1)
+
+#Print statements for testing
+print(dog1, dog1.speak())
+print(dog2, dog2.speak())
